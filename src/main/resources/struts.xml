@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="dept" namespace="/" extends="struts-default">
+		<!-- class:交给spring管理 引用的是spring的bean id -->
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="{2}">/{1}_{2}.jsp</result>
+			<result name="error">/Error.jsp</result>
+			
+			<result name="toFindAll" type="redirectAction">
+			<param name="actionName">dept_findAll</param>
+			</result>
+		</action>
+	</package>
+	
+		<package name="dept2" namespace="/" extends="json-default">
+		<action name="getJson" class="deptAction" method="getJson">
+		<result name="getJson" type="json">
+		<param name="root">deptList</param>
+		</result>
+		
+		</action>
+		</package>
+</struts>
